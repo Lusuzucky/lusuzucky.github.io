@@ -137,10 +137,7 @@ body {
     display: block;
     max-width: 900px;
     height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-radius: 16px;
     margin-top: 0px;
     margin-right: auto;
     margin-bottom: 0px;
@@ -153,10 +150,7 @@ body {
     display: block;
     max-width: 900px;
     height: auto;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-radius: 16px;
     margin-top: 25px;
     margin-right: auto;
     margin-bottom: 25px;
