@@ -8,36 +8,62 @@
     <link rel="stylesheet" href="./css/style.css">
   </head>
 
+  <script>
+    var imgs = document.querySelectorAll('img');
+
+    //offsetTop是元素与offsetParent的距离，循环获取直到页面顶部
+    function getTop(e) {
+        var T = e.offsetTop;
+        while(e = e.offsetParent) {
+            T += e.offsetTop;
+        }
+        return T;
+    }
+
+    function lazyLoad(imgs) {
+        var H = document.documentElement.clientHeight;//获取可视区域高度
+        var S = document.documentElement.scrollTop || document.body.scrollTop;
+        for (var i = 0; i < imgs.length; i++) {
+            if (H + S > getTop(imgs[i])) {
+                imgs[i].src = imgs[i].getAttribute('data-src');
+            }
+        }
+    }
+
+    window.onload = window.onscroll = function () { //onscroll()在滚动条滚动的时候触发
+        lazyLoad(imgs);
+    }
+  </script>
+
   <body>
     <div data-v-32b84ec5="">
       <div id="default-editor-page__placeholder" class="panel">
         <h1 class="welcome">苏达伟 - 作品集</h1>
         <div class="big-title"><span>SUDAWEI'S PORTFOLIO</span></div>
-        <div class="img-photo2"><img src="img/01.jpg" /></div>
-        <div class="img-photo3"><img src="img/02.jpg" /></div>
-        <div class="img-photo3"><img src="img/03.jpg" /></div>
-        <div class="img-photo2"><img src="img/04.jpg" /></div>
-        <div class="img-photo2"><img src="img/05.jpg" /></div>
-        <div class="img-photo2"><img src="img/06.jpg" /></div>
-        <div class="img-photo2"><img src="img/08.jpg" /></div>
-        <div class="img-photo2"><img src="img/09.jpg" /></div>
-        <div class="img-photo2"><img src="img/07.jpg" /></div>
-        <div class="img-photo2"><img src="img/10_1.jpg" /></div>
-        <div class="img-photo2"><img src="img/10_2.jpg" /></div>
-        <div class="img-photo2"><img src="img/10_3.jpg" /></div>
-        <div class="img-photo2"><img src="img/10_4.jpg" /></div>
-        <div class="img-photo2"><img src="img/10_5.jpg" /></div>
-        <div class="img-photo2"><img src="img/10_6.jpg" /></div>
-        <div class="img-photo2"><img src="img/11.jpg" /></div>
-        <div class="img-photo2"><img src="img/12_1.jpg" /></div>
-        <div class="img-photo2"><img src="img/12_2.jpg" /></div>
-        <div class="img-photo2"><img src="img/12_3.jpg" /></div>
-        <div class="img-photo"><img src="img/black.jpg" height="50px" /></div>
-        <div class="img-photo2"><img src="img/13.jpg" /></div>
-        <div class="video"><video src="video/1.mp4" controls="controls" muted loop="loop"/></video></div>
-        <div class="video"><video src="video/2.mov" controls="controls" muted loop="loop"/></video></div>
-        <div class="video"><video src="video/3.mp4" controls="controls" muted loop="loop"/></video></div>
-        <div class="video"><video src="video/4.mp4" controls="controls" muted loop="loop"/></video></div>
+        <div class="img-photo2"><img src="img/01.jpg" loading="lazy" /></div>
+        <div class="img-photo3"><img src="img/02.jpg" loading="lazy" /></div>
+        <div class="img-photo3"><img src="img/03.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/04.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/05.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/06.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/08.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/09.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/07.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/10_1.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/10_2.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/10_3.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/10_4.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/10_5.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/10_6.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/11.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/12_1.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/12_2.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/12_3.jpg" loading="lazy" /></div>
+        <div class="img-photo2"><img src="img/13.jpg" loading="lazy" /></div>
+        <div class="video"><video src="video/1.mp4" controls="controls" muted loop="loop" preload="none" poster="video/1.jpg"/></video></div>
+        <div class="video"><video src="video/2.mov" controls="controls" muted loop="loop" preload="none" poster="video/2.jpg"/></video></div>
+        <div class="video"><video src="video/3.mp4" controls="controls" muted loop="loop" preload="none" poster="video/3.jpg"/></video></div>
+        <div class="video"><video src="video/4.mp4" controls="controls" muted loop="loop" preload="none" poster="video/4.jpg"/></video></div>
         <div class="img-photo2"><img src="img/14.jpg" /></div>
         <div class="img-photo"><img src="img/black.jpg" height="100px" /></div>
         <div class="description1">
