@@ -19,23 +19,45 @@
 // });
 
 
-//获取页面所有图片
-const images = document.querySelectorAll('img')
-//图片异步加载
-preload(images,0);
+// 创建一个数组，存放要加载的图片src
+var src = new Array();
+		src.push('img/01.jpg');
+    src.push('img/02.jpg');
+    src.push('img/03.jpg');
+		src.push('img/04.jpg');
+		src.push('img/05.jpg');
+		src.push('img/06.jpg');
+		src.push('img/08.jpg');
+		src.push('img/09.jpg');
+		src.push('img/07.jpg');
+		src.push('img/10_1.jpg');
+		src.push('img/10_2.jpg');
+		src.push('img/10_3.jpg');
+		src.push('img/10_4.jpg');
+		src.push('img/10_5.jpg');
+		src.push('img/10_6.jpg');
+		src.push('img/11.jpg');
+		src.push('img/12_1.jpg');
+		src.push('img/12_2.jpg');
+		src.push('img/12_3.jpg');
+		src.push('img/13.jpg');
+		src.push('img/01.jpg');
 
-//图片异步加载
-function preload(images, index) {
-  index = index || 0;
-  images.forEach(image => {
-    // if (image && image.length > index) {
-      const data_src = image.getAttribute('data-src');
-      image.setAttribute('src', data_src);
-      //   //图片加载完成后回到函数中开始加载下一张图片
-      // img.onload = function() {
-      //     preload(images, index + 1);
-      // };
-      console.log('触发');
-    // };
-  }); 
+
+// 图片按顺序加载，使用递归算法，直到加载完最后一张图片，退出递归
+function preload(src, index) {
+	index = index || 0;
+	if(index >= 21) {
+		return false;
+	}
+	if (src && src.length > index) {
+		var img = new Image();
+		img.onload = function() {
+				preload(src, index + 1);
+		}
+		img.src = src[index];
+	}
 }
+preload(src);
+
+
